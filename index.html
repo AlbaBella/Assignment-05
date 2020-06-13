@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+      <link rel="stylesheet"  href="css/style.css" />
+    </head>
+    <body>
+        <div>
+            <button onclick="addRow()">Add row</button>
+            <button onclick="addColumn()">Add column</button>
+            <button onclick="removeRow()">Remove row</button>
+            <button onclick="removeColumn()">Remove column</button>
+            <button onclick="fillUncolored()">Fill uncolored cells</button>
+            <button onclick="fillAll()">Color all cells</button>
+            <button onclick="clearAll()">Clear all cells</button>
+        </div>
+        <div>
+            <span>Choose a color:</span>
+            <select onchange="selectColor(this.value)">
+                <option value="blue">Blue</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="grey">Grey</option>
+                <option value="pink">Pink</option>
+            </select>
+        </div>
+        <br>
+        <table id="table"></table>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
