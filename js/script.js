@@ -1,52 +1,50 @@
+let columns = 1;
 
-
-let column=1;
 function addRow(){
-    let table=document.getElementById("table");
-    let tablerow=document.createElement("tr");
-    tablerow.classList.add("row");
-    table.appendChild(tablerow);
-    for (let i=0;i<column;i++){
-        let tablecell=document.createElement("td");
-        tablerow.appendChild(tablecell);
-    }
-
+  let table = document.getElementById("table");
+  let tableRow = document.createElement("tr");
+  tableRow.classList.add("row");
+  table.appendChild(tableRow);
+  for (let i = 0; i < columns; i++) {
+    let tableCell = document.createElement("td");
+    colorChange(tableCell);
+    tableRow.appendChild(tableCell);
+  }
 }
+
 function addColumn(){
-    if(column===0){
-        column=1;
-        addRow();
-    }
-    column++;
-    let tablerows=document.getElementByClassName("row");
-    tr=[...tablerows];
-    for(let i=0;i<tr.length;i++){
-        let tablecell=document.createElement("td");
-        tr[i].appendChild(tablecell);
-    }
+  columns++;
+  let rows = document.getElementsByClassName("row");
+  tr = [...rows];
+  for (let i = 0; i < tr.length; i++) {
+    let tableCell = document.createElement("td");
+    colorChange(tableCell);
+    tr[i].appendChild(tableCell);
+  }
 }
 
 function removeRow(){
-    let tablerows=document.getElementsByClassName("row");
-    tr=[...tablerows];
-    if(tr.length==0){
-        return;
-    }
-    tr[tr.length - 1].parentNode.removeChild(tr[tr.length - 1]);
-    if(tr.length==1){
-        columns=1;
-    }
+  let rows = document.getElementsByClassName("row");
+  tr = [...rows];
+  if (tr.length == 0) {
+    return;
+  }
+  tr[tr.length - 1].parentNode.removeChild(tr[tr.length - 1]);
+  if (tr.length == 1) {
+    columns = 1;
+  }
 }
 
 function removeColumn(){
-    if (column==1){
-        return;
-    }
-    let tablerows=document.getElementsByClassName("row");
-    tr=[...tablerows];
-    for(let i=0;i<tr.length;i++){
-        tr[i].removeChild(tr[i].lastChild);
-    }
+  if (columns == 1) {
+    return;
+  }
+  columns--;
+  let rows = document.getElementsByClassName("row");
+  tr = [...rows];
+  for (let i = 0; i < tr.length; i++) {
+    tr[i].removeChild(tr[i].lastChild);
+  }
 }
 let selectedColor = "blue";
 const selectColor = (color) => {
